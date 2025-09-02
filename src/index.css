@@ -66,9 +66,15 @@ All colors MUST be HSL. Professional, trustworthy, modern design.
     --shadow-lg: 0 10px 15px -3px hsl(220 13% 18% / 0.1), 0 4px 6px -2px hsl(220 13% 18% / 0.05);
     --shadow-hero: 0 25px 50px -12px hsl(200 95% 40% / 0.25);
 
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    /* Enhanced background patterns and gradients */
+    --gradient-radial: radial-gradient(circle at 50% 50%, hsl(200 95% 40% / 0.1), transparent 50%);
+    --gradient-mesh: 
+      radial-gradient(circle at 20% 80%, hsl(200 95% 50% / 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(35 100% 65% / 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, hsl(200 85% 60% / 0.1) 0%, transparent 50%);
+    
+    /* Enhanced background utilities */
+    --bg-pattern: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e1f5fe' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 
     --sidebar-background: 0 0% 98%;
 
@@ -133,9 +139,21 @@ All colors MUST be HSL. Professional, trustworthy, modern design.
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    background: var(--gradient-mesh), var(--bg-pattern);
+    background-attachment: fixed;
   }
 
-  /* Custom utilities for marketplace */
+  /* Enhanced custom utilities for marketplace */
+  .bg-mesh {
+    background: var(--gradient-mesh), var(--bg-pattern);
+  }
+
+  .bg-enhanced {
+    background: 
+      linear-gradient(135deg, hsl(var(--background)) 0%, hsl(210 20% 99%) 100%),
+      var(--bg-pattern);
+  }
+
   .gradient-hero {
     background: var(--gradient-hero);
   }
@@ -145,11 +163,14 @@ All colors MUST be HSL. Professional, trustworthy, modern design.
   }
 
   .gradient-subtle {
-    background: var(--gradient-subtle);
+    background: 
+      linear-gradient(180deg, hsl(var(--background)) 0%, hsl(210 20% 98%) 50%, hsl(var(--background)) 100%),
+      var(--bg-pattern);
   }
 
   .gradient-card {
     background: var(--gradient-card);
+    backdrop-filter: blur(10px);
   }
 
   .shadow-hero {
@@ -168,5 +189,35 @@ All colors MUST be HSL. Professional, trustworthy, modern design.
   .greek-text {
     font-feature-settings: "kern" 1, "liga" 1;
     text-rendering: optimizeLegibility;
+  }
+
+  /* Enhanced floating elements */
+  .floating-elements::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 200px;
+    height: 200px;
+    background: var(--gradient-radial);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .floating-elements::after {
+    content: '';
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, hsl(35 100% 65% / 0.1), transparent 70%);
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite reverse;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
   }
 }

@@ -50,16 +50,17 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-subtle">
+    <div className="min-h-screen bg-enhanced relative overflow-hidden">
+      <div className="floating-elements absolute inset-0 pointer-events-none" />
       {/* Header */}
-      <header className="border-b border-border bg-background/95 backdrop-blur-sm sticky top-0 z-50">
+      <header className="border-b border-border bg-background/80 backdrop-blur-md sticky top-0 z-50 relative">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-gradient-hero rounded-lg flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-sm">S</span>
               </div>
-              <span className="font-bold text-xl text-foreground">ServiceLink</span>
+              <span className="font-bold text-xl text-foreground">ServiceHub</span>
             </div>
             
             <nav className="hidden md:flex items-center gap-6">
@@ -77,7 +78,8 @@ const Index = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative py-20 overflow-hidden bg-enhanced">
+        <div className="absolute inset-0 bg-gradient-radial opacity-50" />
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
           style={{ backgroundImage: `url(${heroImage})` }}
@@ -127,10 +129,12 @@ const Index = () => {
       </section>
 
       {/* Service Categories */}
-      <ServiceCategories />
+      <div className="relative z-10">
+        <ServiceCategories />
+      </div>
 
       {/* Featured Services */}
-      <section className="py-16" id="services">
+      <section className="py-16 relative z-10" id="services">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
@@ -150,7 +154,7 @@ const Index = () => {
       </section>
 
       {/* How It Works */}
-      <section className="py-16 bg-gradient-subtle" id="how-it-works">
+      <section className="py-16 bg-enhanced relative z-10" id="how-it-works">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
@@ -196,7 +200,7 @@ const Index = () => {
       </section>
 
       {/* Call to Action for Providers */}
-      <section className="py-16" id="providers">
+      <section className="py-16 relative z-10" id="providers">
         <div className="container mx-auto px-4">
           <div className="gradient-card rounded-2xl border border-border p-8 md:p-12 text-center max-w-4xl mx-auto">
             <div className="w-20 h-20 bg-gradient-warm rounded-full flex items-center justify-center mx-auto mb-6">
@@ -233,7 +237,7 @@ const Index = () => {
                 <div className="w-8 h-8 bg-gradient-hero rounded-lg flex items-center justify-center">
                   <span className="text-primary-foreground font-bold text-sm">S</span>
                 </div>
-                <span className="font-bold text-xl">ServiceLink</span>
+                <span className="font-bold text-xl">ServiceHub</span>
               </div>
               <p className="text-background/80">
                 Συνδέουμε πελάτες με αξιόπιστους επαγγελματίες σε όλη την Ελλάδα.
@@ -272,7 +276,7 @@ const Index = () => {
           </div>
           
           <div className="border-t border-background/20 mt-8 pt-8 text-center text-background/80">
-            <p>&copy; 2024 ServiceLink. Όλα τα δικαιώματα διατηρούνται.</p>
+            <p>&copy; 2024 ServiceHub. Όλα τα δικαιώματα διατηρούνται.</p>
           </div>
         </div>
       </footer>
